@@ -55,7 +55,8 @@ This query provides a monthly summary of total revenue, invoice count, and quant
 -- Monthly Cumulative Sales by Year
 SELECT
 	InvoiceMonth, 
-	Sum_price, 
+	Sum_price,
+	-- Reset accumulation each year
 	SUM(Sum_price) OVER (PARTITION BY DATETRUNC(year, InvoiceMonth) ORDER BY InvoiceMonth) AS cummulative_sales
 FROM
 (SELECT
@@ -98,7 +99,9 @@ WITH monthly_sales AS (
 SELECT 
     InvoiceMonth,
     MonthlySales,
+	-- Revenue same month last year
     LAG(MonthlySales, 12) OVER (ORDER BY InvoiceMonth) AS SalesLastYear,
+	-- Year-over-year growth %
     CASE 
         WHEN LAG(MonthlySales, 12) OVER (ORDER BY InvoiceMonth) IS NULL THEN NULL
         ELSE ROUND(100.0 * (MonthlySales - LAG(MonthlySales, 12) OVER (ORDER BY InvoiceMonth)) / NULLIF(LAG(MonthlySales, 12) OVER (ORDER BY InvoiceMonth), 0), 2)
@@ -148,11 +151,13 @@ SELECT
 	InvoiceYear, 
 	InvoiceMonth, 
 	StockGroupName, 
-	Total_amount, 
+	Total_amount,
+	-- Compare monthly total against the average of that year
 	CASE WHEN Total_amount < AVG(Total_amount) OVER (PARTITION BY StockGroupName, InvoiceYear)  THEN 'Below AVG'
 		 WHEN Total_amount > AVG(Total_amount) OVER (PARTITION BY StockGroupName, InvoiceYear)  THEN 'Over AVG'
 		 ELSE 'AVG'
-	END avg_change, 
+	END avg_change,
+	-- Track performance trend compared to the previous month
 	CASE WHEN Total_amount - LAG(Total_amount) OVER (PARTITION BY StockGroupName ORDER BY InvoiceYear, InvoiceMonth) < 0 THEN 'Decrease'
 		 WHEN Total_amount - LAG(Total_amount) OVER (PARTITION BY StockGroupName ORDER BY InvoiceYear, InvoiceMonth) > 0 THEN 'Increase'
 		 ELSE 'No change'
@@ -198,6 +203,7 @@ WITH ItemSales AS (
 		St.UnitPrice,
 		St.StockItemName
 ),
+-- Rank products by revenue within each group
 Ranked AS (
     SELECT
         *,
@@ -215,7 +221,8 @@ SELECT
 FROM 
 	Ranked
 WHERE 
-	rk <= 3
+	rk <= 3 -- Select top 3 products for each product group
+ORDER BY 
 ORDER BY 
 	StockGroupName, 
 	rk
@@ -239,7 +246,8 @@ WITH segmentation_price AS (
 SELECT
 	St.StockItemName, 
 	St.UnitPrice, 
-	St.UnitPrice*(1+St.TaxRate/100) AS UnitPriceWithTax, 
+	St.UnitPrice*(1+St.TaxRate/100) AS UnitPriceWithTax,
+	 -- Categorize into price range
 	CASE WHEN St.UnitPrice*(1+St.TaxRate/100) > 500 THEN 'Over 500$'
 		 WHEN St.UnitPrice*(1+St.TaxRate/100) BETWEEN 300 AND 500 THEN '300-500$'
 		 WHEN St.UnitPrice*(1+St.TaxRate/100) BETWEEN 100 AND 300 THEN '100-300$'
@@ -295,6 +303,7 @@ SELECT
 	State_name, 
 	Sp.SalesTerritory, 
 	Sales_amount,
+	-- Revenue per capita
 	Sales_amount/Sp.LatestRecordedPopulation AS sales_per_capital
 
 FROM 
@@ -335,11 +344,13 @@ SELECT
 	InvoiceYear, 
 	InvoiceMonth, 
 	SalesTerritory, 
-	TotalSales, 
+	TotalSales,
+	-- Compare monthly sales with the territory's average in that year
 	CASE WHEN TotalSales < AVG(TotalSales) OVER (PARTITION BY SalesTerritory, InvoiceYear)  THEN 'Below AVG'
 		 WHEN TotalSales > AVG(TotalSales) OVER (PARTITION BY SalesTerritory, InvoiceYear)  THEN 'Over AVG'
 		 ELSE 'AVG'
-	END avg_change, 
+	END avg_change,
+	-- Month-over-month change direction
 	CASE WHEN TotalSales - LAG(TotalSales) OVER (PARTITION BY SalesTerritory ORDER BY InvoiceYear, InvoiceMonth) < 0 THEN 'Decrease'
 		 WHEN TotalSales - LAG(TotalSales) OVER (PARTITION BY SalesTerritory ORDER BY InvoiceYear, InvoiceMonth) > 0 THEN 'Increase'
 		 ELSE 'No change'
