@@ -223,7 +223,6 @@ FROM
 WHERE 
 	rk <= 3 -- Select top 3 products for each product group
 ORDER BY 
-ORDER BY 
 	StockGroupName, 
 	rk
 ```
