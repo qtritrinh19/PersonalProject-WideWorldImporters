@@ -49,7 +49,7 @@ This query provides a monthly summary of total revenue, invoice count, and quant
 
 - Anomalies or Spikes: Detect unusual patterns or sharp changes in any metric that may indicate promotions, supply issues, or unexpected events.
 
-#### 2.2.2. Monthly Cumulative Sales by Year
+#### 2.1.2. Monthly Cumulative Sales by Year
 
 ```sql
 -- Monthly Cumulative Sales by Year
@@ -81,7 +81,7 @@ Instead of viewing monthly sales in isolation, this query shifts the focus to ho
 - Performance Consistency: Smooth and steady cumulative growth may indicate operational stability or strong customer retention.
 
 
-#### 2.2.3. Year-over-Year (YoY) Growth by Month
+#### 2.1.3. Year-over-Year (YoY) Growth by Month
 
 ```sql
 -- Year-over-Year (YoY) Growth by Month
