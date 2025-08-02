@@ -37,15 +37,15 @@ ORDER BY
 	DATETRUNC(month, I.InvoiceDate)
 ```
 
-| Month       | Revenue (USD) | Total Invoices | Total Quantity |
-|-------------|----------------|----------------|----------------|
-| 2013-01     | 4,335,972.97   | 5,246          | 193,271        |
-| 2013-02     | 3,193,304.60   | 3,707          | 142,120        |
-| 2013-03     | 4,451,081.62   | 5,330          | 207,486        |
-| ...         | ...            | ...            | ...            |
-| 2016-03     | 5,330,250.56   | 6,074          | 252,408        |
-| 2016-04     | 5,236,062.81   | 5,923          | 251,945        |
-| 2016-05     | 5,704,232.71   | 6,351          | 270,036        |
+| InvoiceMonth | Sum_price   | Total_invoices | Total_quantity |
+|--------------|-------------|----------------|----------------|
+| 2013-01-01   | 4335972.97  | 5246           | 193271         |
+| 2013-02-01   | 3193304.60  | 3707           | 142120         |
+| 2013-03-01   | 4451081.62  | 5330           | 207486         |
+| ...          | ...         | ...            | ...            |
+| 2016-03-01   | 5330250.56  | 6074           | 252408         |
+| 2016-04-01   | 5236062.81  | 5923           | 251945         |
+| 2016-05-01   | 5704232.71  | 6351           | 270036         |
 
 This query provides a monthly summary of total revenue, invoice count, and quantity sold. It enables several key business insights:
 
@@ -133,15 +133,15 @@ ORDER BY
 
 ```
 
-| InvoiceMonth | MonthlySales | SalesLastYear | YoY_Growth_Percent |
-|--------------|--------------------|----------------------|----------------|
-| 2013-01      | 4,335,972.97       | –                    | –              |
-| 2013-02      | 3,193,304.60       | –                    | –              |
-| 2013-03      | 4,451,081.62       | –                    | –              |
-| ...          | ...                | ...                  | ...            |
-| 2016-03      | 5,330,250.56       | 5,207,351.93         | 2.36%          |
-| 2016-04      | 5,236,062.81       | 5,834,255.09         | -10.25%        |
-| 2016-05      | 5,704,232.71       | 5,152,840.72         | 10.70%         |
+| InvoiceMonth | MonthlySales       | SalesLastYear        | YoY_Growth_Percent |
+|--------------|--------------------|----------------------|--------------------|
+| 2013-01      | 4,335,972.97       | –                    | –                  |
+| 2013-02      | 3,193,304.60       | –                    | –                  |
+| 2013-03      | 4,451,081.62       | –                    | –                  |
+| ...          | ...                | ...                  | ...                |
+| 2016-03      | 5,330,250.56       | 5,207,351.93         | 2.36%              |
+| 2016-04      | 5,236,062.81       | 5,834,255.09         | -10.25%            |
+| 2016-05      | 5,704,232.71       | 5,152,840.72         | 10.70%             |
 
 This query measures the percentage change in monthly sales compared to the same month in the previous year, providing direct visibility into growth or decline on an annual basis. Unlike cumulative or raw totals, YoY analysis reveals true performance shifts by controlling for seasonality and calendar alignment. Key insights include:
 
@@ -201,13 +201,13 @@ ORDER BY
 ```
 | InvoiceYear | InvoiceMonth | StockGroupName   | Total_amount | avg_change | pm_change |
 |-------------|--------------|------------------|--------------|------------|-----------|
-| 2013        | 01           | Clothing          | 1,144,552.45 | Below AVG  | No change |
-| 2013        | 02           | Clothing          |   841,948.35 | Below AVG  | Decrease  |
-| 2013        | 03           | Clothing          | 1,298,550.10 | Over AVG   | Increase  |
-| ...         | ...          | ...               | ...          | ...        | ...       |
-| 2016        | 04           | T-Shirts          |   830,898.00 | Over AVG   | Decrease  |
-| 2016        | 05           | T-Shirts          |   872,380.80 | Over AVG   | Increase  |
-| 2016        | 05           | USB Novelties     |   103,624.18 | Over AVG   | Increase  |
+| 2013        | 01           | Clothing         | 1,144,552.45 | Below AVG  | No change |
+| 2013        | 02           | Clothing         |   841,948.35 | Below AVG  | Decrease  |
+| 2013        | 03           | Clothing         | 1,298,550.10 | Over AVG   | Increase  |
+| ...         | ...          | ...              | ...          | ...        | ...       |
+| 2016        | 04           | T-Shirts         |   830,898.00 | Over AVG   | Decrease  |
+| 2016        | 05           | T-Shirts         |   872,380.80 | Over AVG   | Increase  |
+| 2016        | 05           | USB Novelties    |   103,624.18 | Over AVG   | Increase  |
 
 This query evaluates how different product groups perform month by month, enabling comparative analysis within and across years. It introduces two key perspectives: relative performance (against group average) and temporal change (month-over-month). From this, several insights emerge:
 
@@ -267,6 +267,17 @@ ORDER BY
 	rk
 ```
 
+| StockGroupName   | StockItemID | UnitPrice | StockItemName                                                       | total_revenue  | total_quan  |
+|------------------|-------------|-----------|---------------------------------------------------------------------|----------------|-------------|
+| Clothing         | 88          | 18.00     | "The Gu" red shirt XML tag t-shirt (White) 7XL                      | 1559455.20     | 75336       |
+| Clothing         | 79          | 18.00     | "The Gu" red shirt XML tag t-shirt (White) S                        | 1537596.00     | 74280       |
+| Clothing         | 148         | 18.00     | Halloween skull mask (Gray) L                                       | 1529647.20     | 73896       |
+| ...              | ...         | ...       | ...                                                                 | ...            | ...         |
+| USB Novelties    | 15          | 240.00    | USB food flash drive - dessert 10 drive variety pack                | 1562118.60     | 5884        |
+| USB Novelties    | 8           | 240.00    | USB food flash drive - dim sum 10 drive variety pack                | 1475220.00     | 5537        |
+| USB Novelties    | 13          | 32.00     | USB food flash drive - shrimp cocktail                              | 220281.12      | 6204        |
+
+
 This query ranks individual products within each product group based on total revenue and identifies the top three performers. Rather than viewing performance at the category level, this analysis drills down to specific stock items, offering the following key insights:
 
 - Best-Selling Products Identification: Spot the most profitable products in each category, which can be prioritized for promotion, inventory planning, or product bundling.
@@ -311,6 +322,13 @@ ORDER BY
 	SUM(ExtendedPrice) DESC
 ```
 
+| price_range  | sum_of_sale     |
+|--------------|-----------------|
+| Below 100$   | 118569492.45    |
+| 100-300$     | 60554398.85     |
+| Over 500$    | 12773338.65     |
+| 300-500$     | 6146209.50      |
+
 This query groups products by their final unit price (including tax) into defined price tiers and sums up the total revenue generated by each range. It offers practical insights into customer purchasing behavior and the company's pricing structure:
 
 - Revenue Distribution by Price Tier: Highlights which pricing segments (e.g., below $100 or over $500) contribute most to total sales.
@@ -351,6 +369,15 @@ FROM
 ORDER BY 
 	Sales_amount DESC
 ```
+| State_name             | SalesTerritory    | Sales_amount  | sales_per_capital  |
+|------------------------|-------------------|---------------|--------------------|
+| Texas                  | Southwest         | 13747265.11   | 0.499789           |
+| Pennsylvania           | Mideast           | 11247214.88   | 0.846625           |
+| California             | Far West          | 10153238.90   | 0.244889           |
+| ...                    | ...               | ...           | ...                |
+| New Hampshire          | New England       | 1052763.50    | 0.764869           |
+| Hawaii                 | Far West          | 364314.77     | 0.259473           |
+
 This query aggregates sales revenue by state and links each state to its broader sales territory. Additionally, it calculates sales per capita to normalize performance based on population size. It uncovers two key insights:
 
 - Top-Performing States and Territories: Identifies which regions generate the most revenue, helping prioritize geographic focus.
@@ -403,6 +430,16 @@ ORDER BY
 
 ```
 
+| InvoiceYear | InvoiceMonth | SalesTerritory | TotalSales | avg_change | pm_change |
+|-------------|--------------|----------------|------------|------------|-----------|
+| 2013        | 1            | External       | 89102.00   | Over AVG   | No change |
+| 2013        | 2            | External       | 45176.89   | Below AVG  | Decrease  |
+| 2013        | 3            | External       | 86368.80   | Over AVG   | Increase  |
+| ...         | ...          | ...            | ...        | ...        | ...       |
+| 2016        | 3            | Southwest      | 630162.17  | Below AVG  | Increase  |
+| 2016        | 4            | Southwest      | 641164.00  | Below AVG  | Increase  |
+| 2016        | 5            | Southwest      | 754316.18  | Over AVG   | Increase  |
+
 This query tracks monthly revenue trends across sales territories, identifying whether each region is performing above or below its yearly average, and whether monthly sales are increasing or decreasing over time. From this, we can derive key insights:
 
 - Territory Momentum Tracking: Detects whether each region is gaining or losing sales momentum month by month, helping detect growth or slowdown early.
@@ -434,6 +471,17 @@ ORDER BY
 	SalesAmount DESC
 
 ```
+
+| CityName         | StateProvinceName | SalesTerritory   | SalesAmount |
+|------------------|-------------------|------------------|-------------|
+| Sinclair         | Wyoming           | Rocky Mountain   | 648919.36   |
+| Teutopolis       | Illinois          | Great Lakes      | 639424.77   |
+| East Fultonham   | Ohio              | Great Lakes      | 628838.61   |
+| ...              | ...               | ...              | ...         |
+| Long Beach       | Washington        | Far West         | 26069.42    |
+| Ellisville       | Illinois          | Great Lakes      | 15189.32    |
+| Midland          | Washington        | Far West         | 8326.23     |
+
 
 This query ranks cities based on total sales revenue and maps each city to its corresponding state and sales territory. It enables a deep dive into location-based performance with the following key insights:
 
