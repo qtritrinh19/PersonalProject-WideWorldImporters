@@ -404,7 +404,59 @@ This query ranks cities based on total sales revenue and maps each city to its c
 - Territory Optimization Clues: Allows detection of standout cities within underperforming territories, guiding fine-tuned regional planning.
 
 
+## 3. Business Insights – Strategic Recommendations:
 
+### Business insights:
+
+- Sales are growing steadily, but with weaker performance in the early months
+
+Monthly and year-over-year trends show that total sales are increasing steadily, especially in the third and fourth quarters of the year. However, the first quarter had some months with lower sales compared to the same months in the previous year.
+
+Insight: Early-year performance could be improved with more effective sales campaigns or targeted seasonal product strategies.
+
+- Product groups show different patterns and seasonality
+
+Some product groups, such as Office Supplies and Computing, perform well in the second half of the year, while others like Packaging Materials show consistently low revenue across all months.
+
+Insight: Strong product groups should be prioritized before peak seasons. Weak product groups should be reviewed to consider changes in pricing, bundling, or possible removal.
+
+- Mid-priced products bring in the highest total revenue
+
+Products priced between $100 and $300 generate most of the total sales value. Expensive products (above $500) are sold less often, but each sale brings in a large amount of money.
+
+Insight: Products in the mid-price range are best for wide promotion. High-priced products can be targeted to loyal customers or used in special offers.
+
+- Only a few products in each group bring in most of the money
+
+In every product category, the top 3 items contribute more than 70% of the group’s total sales value. That means most revenue comes from just a few key items.
+
+Insight: Focus on the best-selling products when planning stock, promotions, and customer targeting.
+
+- Some regions are underperforming
+
+Sales in some areas (like the Southwest or Central territories) are often lower than average and are decreasing in some months. However, a few small-population regions show very high revenue per person.
+
+Insight: The company should review its sales strategy in weaker regions and also explore unique opportunities in smaller regions where customer value is high.
+
+ Sales are concentrated in a few large cities
+ 
+Most of the total revenue comes from a small number of major cities.
+
+Insight: Key cities should receive priority in marketing, product delivery, and customer retention programs.
+
+### Strategic recommendations:
+
+- Strengthen campaigns during the first and second quarters of the year to mitigate off-season slumps reflected in YoY growth drops.
+
+- Reassess underperforming product groups for potential retirement or bundling strategies.
+
+- Focus marketing and upsell efforts on mid-priced products, which have the highest volume and stable contribution.
+
+- Prioritize inventory and marketing around the top 3 best-selling products per group to optimize profitability from high-impact items.
+
+- Launch regional initiatives targeting underperforming sales territories (e.g., Southwest), supported by sales enablement resources.
+
+- Explore high-per-capita sales states for niche targeting, particularly in states with lower populations but strong engagement.
 
 
 
