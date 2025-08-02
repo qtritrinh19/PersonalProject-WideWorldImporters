@@ -80,6 +80,16 @@ GROUP BY
 ) AS t
 ```
 
+| InvoiceMonth | Sum_price   | cummulative_sales |
+|--------------|-------------|-------------------|
+| 2013-01-01   | 4335972.97  | 4335972.97        |
+| 2013-02-01   | 3193304.60  | 7529277.57        |
+| 2013-03-01   | 4451081.62  | 11980359.19       |
+| ...          | ...         | ...               |
+| 2016-03-01   | 5330250.56  | 15030733.59       |
+| 2016-04-01   | 5236062.81  | 20266796.40       |
+| 2016-05-01   | 5704232.71  | 25971029.11       |
+
 Instead of viewing monthly sales in isolation, this query shifts the focus to how revenue builds up progressively throughout each year. By calculating the cumulative total, it provides a more holistic view of performance trends and reveals several unique insights:
 
 - Sales Growth Momentum: Helps assess how quickly revenue builds during the year—revealing strong or slow growth phases.
@@ -122,6 +132,16 @@ ORDER BY
 	InvoiceMonth
 
 ```
+
+| InvoiceMonth | MonthlySales | SalesLastYear | YoY_Growth_Percent |
+|--------------|--------------------|----------------------|----------------|
+| 2013-01      | 4,335,972.97       | –                    | –              |
+| 2013-02      | 3,193,304.60       | –                    | –              |
+| 2013-03      | 4,451,081.62       | –                    | –              |
+| ...          | ...                | ...                  | ...            |
+| 2016-03      | 5,330,250.56       | 5,207,351.93         | 2.36%          |
+| 2016-04      | 5,236,062.81       | 5,834,255.09         | -10.25%        |
+| 2016-05      | 5,704,232.71       | 5,152,840.72         | 10.70%         |
 
 This query measures the percentage change in monthly sales compared to the same month in the previous year, providing direct visibility into growth or decline on an annual basis. Unlike cumulative or raw totals, YoY analysis reveals true performance shifts by controlling for seasonality and calendar alignment. Key insights include:
 
@@ -179,6 +199,16 @@ ORDER BY
 	StockGroupName, 
 	InvoiceMonth
 ```
+| InvoiceYear | InvoiceMonth | StockGroupName   | Total_amount | avg_change | pm_change |
+|-------------|--------------|------------------|--------------|------------|-----------|
+| 2013        | 01           | Clothing          | 1,144,552.45 | Below AVG  | No change |
+| 2013        | 02           | Clothing          |   841,948.35 | Below AVG  | Decrease  |
+| 2013        | 03           | Clothing          | 1,298,550.10 | Over AVG   | Increase  |
+| ...         | ...          | ...               | ...          | ...        | ...       |
+| 2016        | 04           | T-Shirts          |   830,898.00 | Over AVG   | Decrease  |
+| 2016        | 05           | T-Shirts          |   872,380.80 | Over AVG   | Increase  |
+| 2016        | 05           | USB Novelties     |   103,624.18 | Over AVG   | Increase  |
+
 This query evaluates how different product groups perform month by month, enabling comparative analysis within and across years. It introduces two key perspectives: relative performance (against group average) and temporal change (month-over-month). From this, several insights emerge:
 
 - Category Health Monitoring: Identify which product groups are consistently underperforming or overachieving relative to their yearly average.
