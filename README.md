@@ -87,13 +87,13 @@ Instead of viewing monthly sales in isolation, this query shifts the focus to ho
 -- Year-over-Year (YoY) Growth by Month
 WITH monthly_sales AS (
     SELECT
-      DATETRUNC(month, I.InvoiceDate) AS InvoiceMonth,
-      SUM(Il.ExtendedPrice) AS MonthlySales
+	DATETRUNC(month, I.InvoiceDate) AS InvoiceMonth,
+	SUM(Il.ExtendedPrice) AS MonthlySales
     FROM 
-		  Sales.InvoiceLines Il
-		  JOIN Sales.Invoices I ON Il.InvoiceID = I.InvoiceID
+	Sales.InvoiceLines Il
+	JOIN Sales.Invoices I ON Il.InvoiceID = I.InvoiceID
     GROUP BY 
-		  DATETRUNC(month, I.InvoiceDate)
+	DATETRUNC(month, I.InvoiceDate)
 )
 
 SELECT 
@@ -185,12 +185,12 @@ This query evaluates how different product groups perform month by month, enabli
 -- Top 3 Selling Products per Product Group
 WITH ItemSales AS (
     SELECT
-        Sg.StockGroupName,
-        St.StockItemID,
+        	Sg.StockGroupName,
+        	St.StockItemID,
 		St.UnitPrice, 
-        St.StockItemName,
-        SUM(Il.ExtendedPrice) AS total_revenue,
-        SUM(Il.Quantity) AS total_quan
+        	St.StockItemName,
+        	SUM(Il.ExtendedPrice) AS total_revenue,
+        	SUM(Il.Quantity) AS total_quan
     FROM 
 		Sales.InvoiceLines Il
 		JOIN Sales.Invoices I ON Il.InvoiceID  = I.InvoiceID
@@ -206,18 +206,18 @@ WITH ItemSales AS (
 -- Rank products by revenue within each group
 Ranked AS (
     SELECT
-        *,
-        RANK() OVER (PARTITION BY StockGroupName ORDER BY total_revenue DESC) AS rk
+        	*,
+        	RANK() OVER (PARTITION BY StockGroupName ORDER BY total_revenue DESC) AS rk
     FROM 
 		ItemSales
 )
 SELECT
-    StockGroupName,
-    StockItemID,
+	StockGroupName,
+    	StockItemID,
 	UnitPrice, 
-    StockItemName,
-    total_revenue,
-    total_quan
+    	StockItemName,
+    	total_revenue,
+    	total_quan
 FROM 
 	Ranked
 WHERE 
@@ -324,9 +324,9 @@ This query aggregates sales revenue by state and links each state to its broader
 WITH territory_performance AS (
 SELECT
 	YEAR(I.InvoiceDate) AS InvoiceYEAR,
-    MONTH(I.InvoiceDate) AS InvoiceMonth,
-    Sp.SalesTerritory,
-    SUM(Il.ExtendedPrice) AS TotalSales
+    	MONTH(I.InvoiceDate) AS InvoiceMonth,
+    	Sp.SalesTerritory,
+    	SUM(Il.ExtendedPrice) AS TotalSales
 FROM 
 	Sales.InvoiceLines Il
 	JOIN Sales.Invoices I ON Il.InvoiceID = I.InvoiceID
@@ -376,10 +376,10 @@ This query tracks monthly revenue trends across sales territories, identifying w
 ```sql
 -- Top Cities by Sales
 SELECT 
-    Ct.CityName,
-    Sp.StateProvinceName,
-    Sp.SalesTerritory,
-    SUM(Il.ExtendedPrice) AS SalesAmount
+    	Ct.CityName,
+    	Sp.StateProvinceName,
+    	Sp.SalesTerritory,
+    	SUM(Il.ExtendedPrice) AS SalesAmount
 FROM 
 	Sales.InvoiceLines Il
 	JOIN Sales.Invoices I ON Il.InvoiceID = I.InvoiceID
@@ -438,7 +438,7 @@ Sales in some areas (like the Southwest or Central territories) are often lower 
 
 Insight: The company should review its sales strategy in weaker regions and also explore unique opportunities in smaller regions where customer value is high.
 
- Sales are concentrated in a few large cities
+- Sales are concentrated in a few large cities
  
 Most of the total revenue comes from a small number of major cities.
 
