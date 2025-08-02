@@ -37,6 +37,16 @@ ORDER BY
 	DATETRUNC(month, I.InvoiceDate)
 ```
 
+| Month       | Revenue (USD) | Total Invoices | Total Quantity |
+|-------------|----------------|----------------|----------------|
+| 2013-01     | 4,335,972.97   | 5,246          | 193,271        |
+| 2013-02     | 3,193,304.60   | 3,707          | 142,120        |
+| 2013-03     | 4,451,081.62   | 5,330          | 207,486        |
+| ...         | ...            | ...            | ...            |
+| 2016-03     | 5,330,250.56   | 6,074          | 252,408        |
+| 2016-04     | 5,236,062.81   | 5,923          | 251,945        |
+| 2016-05     | 5,704,232.71   | 6,351          | 270,036        |
+
 This query provides a monthly summary of total revenue, invoice count, and quantity sold. It enables several key business insights:
 
 - Sales Seasonality: Identify high-performing and low-performing months to uncover seasonal trends and demand cycles.
