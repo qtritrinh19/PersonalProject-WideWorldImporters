@@ -19,6 +19,11 @@ Insights and recommendations are provided on the following key areas:
 - **Promotion & Pricing Dynamics**: An evaluation of how promotional campaigns influence order volumes, alongside a correlation analysis between product pricing and order quantity.
 
 - **Regional Market Penetration**: A state-by-state geographical evaluation of sales and revenue generation across the US market.
+
+An interactive PowerBI dashboard can be downloaded here.
+
+SQL queries utilized to data cleaning and transformation can be found here.
+
 ## 2. SQL-Based Exploratory Analysis
 
 ### 2.1. **Time-based analysis**
