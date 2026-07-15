@@ -10,17 +10,15 @@ Wide World Importers (WWI) is a prominent wholesale importer and distributor bas
 Despite managing a massive volume of daily transactions and generating billions in revenue, WWI has yet to fully harness its historical data regarding sales, product attributes, and promotional efforts. This project thoroughly analyzes and synthesizes this dataset to uncover actionable insights, aiming to optimize inventory management, refine pricing strategies, and drive overall commercial success.
 
 Insights and recommendations are provided on the following key areas:
-	```
-	* Business Performance Overview: Evaluation of macro-level sales patterns over time, focusing on Total Revenue, Order Volume, and Average Order Price.
+- Business Performance Overview: Evaluation of macro-level sales patterns over time, focusing on Total Revenue, Order Volume, and Average Order Price.
 
-	* Category & Product Insights: An in-depth analysis of WWI's various product categories (e.g., Confections, Meat, Poultry) and individual top-selling 	items to understand their impact on overall revenue.
+- Category & Product Insights: An in-depth analysis of WWI's various product categories (e.g., Confections, Meat, Poultry) and individual top-selling 	items to understand their impact on overall revenue.
 
-	* Product Attribute Analysis: An assessment of how specific product characteristics—such as Shelf Life, Allergy Status, and Class—affect sales distribution and consumer demand.
+- Product Attribute Analysis: An assessment of how specific product characteristics—such as Shelf Life, Allergy Status, and Class—affect sales distribution and consumer demand.
 
-	* Promotion & Pricing Dynamics: An evaluation of how promotional campaigns influence order volumes, alongside a correlation analysis between product pricing and order quantity.
+- Promotion & Pricing Dynamics: An evaluation of how promotional campaigns influence order volumes, alongside a correlation analysis between product pricing and order quantity.
 
-	* Regional Market Penetration: A state-by-state geographical evaluation of sales and revenue generation across the US market.
-	```
+- Regional Market Penetration: A state-by-state geographical evaluation of sales and revenue generation across the US market.
 ## 2. SQL-Based Exploratory Analysis
 
 ### 2.1. **Time-based analysis**
