@@ -3,17 +3,23 @@
 This project uses SQL to analyze sales data from the WideWorldImporters database across three main areas: time, product, and region. It includes monthly and yearly sales tracking, cumulative and year-over-year growth, product segmentation by price, performance by category, and identification of top-selling items. Regional analysis covers sales by state, territory, and city, along with per capita metrics and trend changes. All queries apply T-SQL techniques like CTEs, window functions, and conditional logic to simulate real-world business reporting.
 
 
-## 1. Data Source:
+## Project Background:
 
-**WideWorldImporters** is a sample OLTP database developed by Microsoft to simulate a mid-sized wholesale and retail business. It contains realistic transactional data across various domains, including sales, purchasing, inventory, customers, and suppliers.
+Wide World Importers (WWI) is a prominent wholesale importer and distributor based in the San Francisco Bay Area, supplying a vast network of retail customers and supermarkets across the United States.
 
-Link: [Wide World Importers sample database v1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
+Despite managing a massive volume of daily transactions and generating billions in revenue, WWI has yet to fully harness its historical data regarding sales, product attributes, and promotional efforts. This project thoroughly analyzes and synthesizes this dataset to uncover actionable insights, aiming to optimize inventory management, refine pricing strategies, and drive overall commercial success.
 
-This project is based on a subset of tables from the database, primarily focused on sales, product, and location data:
+Insights and recommendations are provided on the following key areas:
 
-- **Sales-related tables**:  `Sales.Invoices`, `Sales.InvoiceLines`, `Sales.Customers`
-- **Product-related tables**:  `Warehouse.StockItems`, `Warehouse.StockGroups`, `Warehouse.StockItemStockGroups`
-- **Location-related tables**:  `Application.Cities`, `Application.StateProvinces`
+	- Business Performance Overview: Evaluation of macro-level sales patterns over time, focusing on Total Revenue, Order Volume, and Average Order Price.
+
+	- Category & Product Insights: An in-depth analysis of WWI's various product categories (e.g., Confections, Meat, Poultry) and individual top-selling items to 	understand their impact on overall revenue.
+
+	- Product Attribute Analysis: An assessment of how specific product characteristics—such as Shelf Life, Allergy Status, and Class—affect sales distribution 	and consumer demand.
+
+	- Promotion & Pricing Dynamics: An evaluation of how promotional campaigns influence order volumes, alongside a correlation analysis between product pricing 	and order quantity.
+
+	- Regional Market Penetration: A state-by-state geographical evaluation of sales and revenue generation across the US market.
 
 ## 2. SQL-Based Exploratory Analysis
 
