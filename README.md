@@ -10,7 +10,7 @@ Wide World Importers (WWI) is a prominent wholesale importer and distributor bas
 Despite managing a massive volume of daily transactions and generating billions in revenue, WWI has yet to fully harness its historical data regarding sales, product attributes, and promotional efforts. This project thoroughly analyzes and synthesizes this dataset to uncover actionable insights, aiming to optimize inventory management, refine pricing strategies, and drive overall commercial success.
 
 Insights and recommendations are provided on the following key areas:
-- **Business Performance Overview**: Evaluation of macro-level sales patterns over time, focusing on Total Revenue, Order Volume, and Average Order Price.
+- **Business Performance Overview**: Evaluation of macro-level sales patterns over time, focusing on Total Revenue, Order Volume, and Average Order Value (AOV).
 
 - **Category & Product Insights**: An in-depth analysis of WWI's various product categories (e.g., Confections, Meat, Poultry) and individual top-selling 	items to understand their impact on overall revenue.
 
